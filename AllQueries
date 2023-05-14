@@ -1,0 +1,19 @@
+const runQuery = await db.run("CREATE TABLE RegisteredCourses (CourseID INTEGER PRIMARY KEY, CourseFullName VARCHAR(250) NULL, DateCreated DATETIME, DateDeleted DATETIME)")
+await db.run("INSERT INTO RegisteredCourses (CourseFullName) VALUES ('Accountancy'),('Acting'),('Aerospace Engineering'),('American Studies'),('Anatomy'),('Ancient History'),('Animation'),('Anthropology'),('Archaeology'),('Architecture'),('Art'),('Artificial Intelligence'),('Astronomy'),('Biochemistry'),('Biology'),('Biomedical Engineering'),('Biomedical Science'),('Business Administration'),('Chemical Engineering'),('Chemistry'),('Civil Engineering'),('Classics'),('Communication Studies'),('Computer Science'),('Construction Management'),('Creative Writing'),('Criminology'),('Dance'),('Dentistry'),('Drama'),('Economics'),('Education'),('Electrical Engineering'),('Electronic Engineering'),('English Literature'),('Environmental Science'),('Fashion Design'),('Film Studies'),('Finance'),('Fine Art'),('Food Science'),('Forensic Science'),('Game Design'),('Genetics'),('Geography'),('Geology'),('Graphic Design'),('Healthcare Management'),('History'),('Hospitality Management'),('Human Resource Management'),('Illustration'),('Information Technology'),('Interior Design'),('International Business'),('International Relations'),('Journalism'),('Law'),('Linguistics'),('Management'),('Marketing'),('Mathematics'),('Mechanical Engineering'),('Media Studies'),('Medical Science')")
+
+
+
+db.run("CREATE TABLE RegisteredUniversities ( UniID INTEGER NOT NULL PRIMARY KEY, UniFullName varchar(250) NULL, DateCreated datetime, DateDeleted datetime)")
+db.run("INSERT INTO RegisteredUniversities (UniFullName, DateCreated, DateDeleted) VALUES ('University of Oxford', '2023-04-29 12:00:00', NULL), ('University of Cambridge', '2023-04-29 12:00:00', NULL), ('Imperial College London', '2023-04-29 12:00:00', NULL), ('University College London', '2023-04-29 12:00:00', NULL), ('University of Edinburgh', '2023-04-29 12:00:00', NULL), ('University of Manchester', '2023-04-29 12:00:00', NULL), ('University of Bristol', '2023-04-29 12:00:00', NULL), ('University of Warwick', '2023-04-29 12:00:00', NULL), ('University of Glasgow', '2023-04-29 12:00:00', NULL), ('University of Leeds', '2023-04-29 12:00:00', NULL); ")
+
+
+
+// CREATE TABLE RegisteredUser (
+// 	UserId Integer Primary Key,
+// 	FullName varchar(250) Null,
+// 	UniId Integer Not Null,
+// 	CourseId Integer Not Null,
+// 	Datecreated datetime Null,
+// 	DateDeleted datetime Null,
+// 	Points Integer null,
+// )

@@ -1,0 +1,49 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Debug Client-side code",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/client",
+      "userDataDir": "${workspaceFolder}/.vscode/chrome",
+      "sourceMapPathOverrides": {
+        "webpack:///./~/*": "${webRoot}/node_modules/*",
+        "webpack:///./*": "${webRoot}/*",
+        "webpack:///*": "*",
+        "/*": "${webRoot}/*"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Server-side code",
+      "program": "${workspaceFolder}/svr.js",
+      "cwd": "${workspaceFolder}",
+      "protocol": "inspector"
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach by Process ID",
+      "processId": "${command:PickProcess}"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "program": "${workspaceFolder}/bin/www"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Both",
+      "program": "${workspaceFolder}/bin/www",
+      "runtimeExecutable": "nodemon",
+      "runtimeArgs": ["${workspaceFolder}/svr.js"],
+      "console": "integratedTerminal",
+      "restart": true
+    }
+  ]
+}
