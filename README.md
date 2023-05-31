@@ -1,7 +1,7 @@
 # INTRO ABOUT THE WEB APP
 
-- This web app is designed especially for university students/users, therefore all the features designed would only apply to students studying at the University.
-- User can only login with single account in a browser (because of localstorage). Please use other browsers to login as a different user's account during testing.
+- This web app is designed especially for university students/users, all the features designed applies to students studying at the University.
+- User can login with single account in a browser (because of localstorage). Please use other browsers to login as a different user's account during testing (Working onto improve to handle multi-user accounts :)).
 
 ## KEY FEATURES IN THE WEB APP
 
