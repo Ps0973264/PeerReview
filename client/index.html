@@ -1,79 +1,63 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form id="SignupForm">
+        <h2 style="display: inline-block; position: relative; left: 35%;">Sign Up</h2>
+        <button class="btn btn-login" id="btnLogin" style="display: inline-block; float: right;" type="button">Login</button>
+        <label for="name">Name:</label>
+        <input type="text" id="name" required />
+        <label for="email">Email:</label>
+        <input type="email" id="email" required />
+        <label for="password">Password:</label>
+        <input type="password" id="password" required />
+        <label for="password">Confirm Password:</label>
+        <input type="password" id="confirmPassword" required />
+        <input type="submit" value="Sign Up" />
+      </form>
 
-<head>
-  <meta charset="utf-8">
-  <title>Testing Code</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="index.css">
-</head>
+      <form style="display:none;" id="LoginForm">
+        <h2 style="display: inline-block; position: relative; left: 35%;">Login</h2>
+        <button class="btn btn-login" id="btnSignup" style="display: inline-block; float: right;" type="button">Sign Up</button>
+        <label for="email">Email:</label>
+        <input type="email" id="emailLogin" required />
+        <label for="password">Password:</label>
+        <input type="password" id="passwordLogin" required />
+        <input type="submit" value="Login" />
+      </form>
 
-<body>
-
-  <nav class="nav">
-    <div class="header">
-      <a id="homeLink" href="">Home</a>
-    </div>
-    <div class="loginClass">
-      <p id="btnLoginSignup"> Login </p>
-    </div>
-  </nav>
-
-  <div class="top">
-    <div class="main">
-      <h2 id="heading">Sign Up</h2>
-      <hr>
-
-      <label for="university">Choose a university:</label>
-      <select class="selectUni" name="university">
-      </select>
-
-      <label for="course">Choose a course:</label>
-      <select class="selectCourse" name="cars">
-      </select>
-
-      <input id="name" type="text" placeholder="Full name">
-      <span id="suggest">Use suggested username:</span>
-      <span id="suggestion"> </span>
-      <input id="username" type="text" placeholder="Username">
-      <span id="warn"></span>
-
-      <button id="submit" type="button">Sign Up</button>
-      <span style="text-align: center;">or</span>
-        <button class="google-button">
-          <img src="https://img.icons8.com/color/16/000000/google-logo.png" style="float: left;"/>
-          <span class="OAuthBtnText">Sign in with Google</span>
-        </button>
-        <button class="facebook-button">
-          <img src="https://img.icons8.com/color/16/000000/facebook-new.png" style="float: left;"/>
-          <span class="OAuthBtnText">Sign in with Facebook</span>
-        </button>
+      <div class="social-login">
+        <h3>Or sign up with:</h3>
+        
+        <button class="btn btn-google">Google</button>
+        <button class="btn btn-facebook">Facebook</button>
+        <button class="btn btn-github">GitHub</button>
       </div>
-  </div>
+    </div>
+  </body>
+  <script>
+    const SignupForm = document.querySelector('#SignupForm');
+    const LoginForm = document.querySelector('#LoginForm');
 
-  <!-- LOG IN Div-->
-  <div class="loginDiv">
+    const btnLogin = document.querySelector('#btnLogin');
+    const btnSignup = document.querySelector('#btnSignup');
+    btnLogin.addEventListener('click', HideUnhideForms);
+    btnSignup.addEventListener('click', HideUnhideForms)
 
-    <h2 id="heading">Log in</h2>
-    <input id="usernameLOG" type="text" placeholder="Username">
-
-    <label for="university">Choose a university:</label>
-    <select class="selectUniLOG" name="university">
-    </select>
-
-    <label for="course">Choose a course:</label>
-    <select class="selectCourseLOG" name="cars">
-    </select>
-
-    <span id="warnLOG"></span>
-    <button id="submitLOG" type="button">Log in</button>
-  </div>
-
-
-  
-
-  <script src="src/Auth/Signup.js" type="module" charset="utf-8"></script>
-  <script src="src/Auth/Login.js" type="module" charset="utf-8"></script>
-</body>
-
+    function HideUnhideForms() {
+      if (LoginForm.style.display === 'none') {
+        LoginForm.style.display = 'block';
+        SignupForm.style.display = 'none';
+      } else {
+        LoginForm.style.display = 'none';
+        SignupForm.style.display = 'block';
+      }
+    }
+  </script>
 </html>
