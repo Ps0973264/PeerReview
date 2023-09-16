@@ -2,12 +2,13 @@ import sql from 'mssql';
 
 
 const config = {
-  server: 'DESKTOP-S0VC9O8',
-  database: 'master',
+  server: '34.147.204.30',
+  database: 'PeerReview',
   port: 1433,
   user: 'sa',
   password: '12qwaszx12',
   options: {
+    encrypt: true,
     trustServerCertificate: true
   }
 };
