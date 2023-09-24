@@ -17,10 +17,31 @@ home.href = window.location.href;
 
 logout.addEventListener('click', () => {
   if (logout.textContent === 'Log Out') {
-    window.location = '/';
+    localStorage.removeItem('jwtToken');
+    authenticateUser()
   }
 });
 
+async function authenticateUser() {
+  const jwtToken = localStorage.getItem('jwtToken');
+  if (jwtToken) {
+    const headers = {
+      'Authorization': jwtToken,
+      'Content-Type': 'application/json',
+    };
+    const response = await fetch('/authenticateUser', {
+      method: 'GET',
+      headers: headers,
+    });
+    if (response.ok) {
+      return
+    }
+  } else {
+    window.location = '/'
+  }
+}
+
+authenticateUser()
 // async function welcomeUser() {
 //   const response = await fetch('/users');
 //   if (response.ok) {

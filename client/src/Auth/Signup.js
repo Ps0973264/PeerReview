@@ -6,7 +6,7 @@ export default class SignUp {
         this.suggestion = document.querySelector('#suggestion');
         this.suggest = document.querySelector('#suggest');
         this.warn = document.querySelector('#warn');
-        this.btnLoginSignup = document.querySelector('#btnLoginSignup');
+        this.btnLoginSignup = document.querySelector('#loginLink');
         this.universityDropdown = document.querySelector('.selectUni');
         this.courseDropdown = document.querySelector('.selectCourse');
         this.top = document.querySelector('.top');

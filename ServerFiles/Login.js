@@ -1,17 +1,11 @@
 import express from 'express';
 import uuid from 'uuid-random';
-import session from 'express-session';
 
 import *  as db from '../database.js'
+import *  as authenticateUser from './UserAuthentication.js'
 
 const loginRouter = new express.Router()
 
-loginRouter.use(session({
-    secret: 'mysecretkeyfornow',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false }
-}))
 /* #region ROUTE: ListOfUsers  */
 loginRouter.post('/ListOfUsers/check-userDetails', express.json(), async (req, res) => {
     try {
@@ -22,7 +16,9 @@ loginRouter.post('/ListOfUsers/check-userDetails', express.json(), async (req, r
             const usernameCheck = await db.RunQuery(query)
             if (usernameCheck.length > 0) {
                 return res.status(409).json({ message: 'Username already exists' });
-            }
+            } else [
+                res.status(200).json({ message: 'success' })
+            ]
         } else {
             query = `SELECT UserID FROM RegisteredUsers WHERE DateDeleted IS NULL AND UserName = '${username.trim()}' AND UniversityID = ${universityID} AND CourseID = ${courseID}`
             const userDetailsCheck = await db.RunQuery(query)
@@ -30,10 +26,9 @@ loginRouter.post('/ListOfUsers/check-userDetails', express.json(), async (req, r
             if (userDetailsCheck.length < 1) {
                 return res.status(409).json({ message: 'Incorrect user details' });
             } else {
-                req.session.userId = userDetailsCheck
+                res.json({token: authenticateUser.generateUserToken({username: username}), message: 'success'})
             }
         }
-        res.status(200).json({ message: 'success' });
     } catch (error) {
         console.error(error);
         res.status(500).send('Server error');
@@ -74,21 +69,6 @@ loginRouter.get('/ListOfCourses', async (req, res) => {
         res.status(500).send('Server error');
     }
 });
-
-function requireAuth(req, res, next) {
-    if (req.session && req.session.userId) {
-        // user is authenticated
-        next();
-    } else {
-        // user is not authenticated, redirect to login page
-        res.redirect('/');
-    }
-}
-
-function destroySession(req, res) {
-    req.session.destroy();
-    res.redirect('/')
-}
 
 
 export default loginRouter;

@@ -25,6 +25,9 @@ class Login {
         const userCheck = await SignUp.prototype.checkUsername(userDetails)
 
         if (userCheck.message === 'success') {
+            console.log(userCheck)
+            const jwtToken = userCheck.token
+            localStorage.setItem('jwtToken', jwtToken);
             window.location = `/upload.html`;
         } else {
             warnLOG.textContent = userCheck.message;

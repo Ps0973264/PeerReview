@@ -1,15 +1,14 @@
 import express from 'express';
-import session from 'express-session'
 import loginRouter from './ServerFiles/Login.js';
-import ws from 'ws';
+import *  as authenticateUser from './ServerFiles/UserAuthentication.js'
 import http from 'http';
-
 
 const app = express();
 const server = http.createServer(app);
 
-
-
+app.get('/authenticateUser', authenticateUser.verifyToken, (req, res) => {
+    res.json(200)
+});
 
 app.use(loginRouter)
 app.use(express.json())
